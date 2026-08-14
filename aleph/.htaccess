@@ -1,0 +1,25 @@
+# # /aleph/
+#
+# Namespace for Aleph Garden. Vocabularies are minted under /ns/<name>, their
+# SHACL shapes under /ns/<name>/shapes, and terms in the hash namespace of the
+# document each resolves to. Documents are served from
+# https://github.com/aleph-garden/vocab, one file per vocabulary, so a new
+# vocabulary needs no change here.
+#
+# The capture excludes dots and slashes, so a request cannot reach outside that
+# directory or name a file other than <name>.ttl and <name>-shapes.ttl.
+#
+# These are working drafts, so redirects are 302. A redirect becomes 303 with
+# content negotiation once its vocabulary is declared stable.
+#
+# ## Contact
+# This space is administered by:
+#
+# Christopher Mühl
+# toki@toph.so
+# GitHub username: tophcodes
+
+RewriteEngine on
+
+RewriteRule ^ns/([a-z0-9-]+)$        https://aleph-garden.github.io/vocab/$1.ttl        [R=302,L]
+RewriteRule ^ns/([a-z0-9-]+)/shapes$ https://aleph-garden.github.io/vocab/$1-shapes.ttl [R=302,L]
